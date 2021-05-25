@@ -6,7 +6,7 @@ import os
 class RecladaJMServer():
     def __init__(self):
 
-        host = os.getenv("RECLADA_RABBITMQ_HOST", "localhost")
+        host = os.getenv("RECLADA_RABBITMQ_HOST", "91.122.49.27")
         self._connection = pika.BlockingConnection(
             pika.ConnectionParameters(host=host))
         self._channel = self._connection.channel()

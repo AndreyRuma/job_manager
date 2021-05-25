@@ -1,0 +1,1 @@
+RUN pip install pika==1.2.0 uuid==1.30

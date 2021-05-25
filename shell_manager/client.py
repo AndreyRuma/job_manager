@@ -1,11 +1,13 @@
 import pika
 import uuid
+import os
 
 class ReclalaJMClient(object):
 
     def __init__(self):
+        host = os.getenv("RECLADA_RABBITMQ_HOST", "91.122.49.27")
         self.connection = pika.BlockingConnection(
-            pika.ConnectionParameters(host='localhost'))
+            pika.ConnectionParameters(host=host))
 
         self.channel = self.connection.channel()
 

@@ -1,11 +1,14 @@
 import pika
 import subprocess
+import os
 
 
 class RecladaJMServer():
     def __init__(self):
+
+        host = os.getenv("RECLADA_RABBITMQ_HOST", "localhost")
         self._connection = pika.BlockingConnection(
-            pika.ConnectionParameters(host='localhost'))
+            pika.ConnectionParameters(host=host))
         self._channel = self._connection.channel()
         self._channel.queue_declare(queue='reclada_rpc_queue')
         self._channel.basic_qos(prefetch_count=1)
